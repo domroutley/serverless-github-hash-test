@@ -18,24 +18,36 @@ plugins:
   - serverless-plugin-git-variables
 
 functions:
+
   alpha:
     name: ${self:service}-alpha
     description: "Branch: ${git:branch} - Commit: ${git:sha1}"
     handler: function_alpha/function.handler
     package:
       include:
-        - function_alpha/**
+        - function_alpha/node_modules/**
+        - function_alpha/function.js
+
   beta:
     name: ${self:service}-beta
     description: "Branch: ${git:branch} - Commit: ${git:sha1}"
     handler: function_beta/function.handler
     package:
       include:
-        - function_beta/**
+        - function_beta/function.js
+    events:
+      - http:
+          method: POST
+          path: beta
+
   gamma:
     name: ${self:service}-gamma
     description: "Branch: ${git:branch} - Commit: ${git:sha1}"
     handler: function_gamma/function.handler
     package:
       include:
-        - function_gamma/**
+        - function_gamma/function.js
+    events:
+      - http:
+          method: POST
+          path: gamma

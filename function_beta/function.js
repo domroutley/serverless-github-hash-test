@@ -1,6 +1,6 @@
 
-exports.handler = async (event, context) => {
-  console.log("Beta")
+exports.handler = async (event, context, callback) => {
+  console.log('Hello world')
   console.log(event)
-  context.succeed('Hello world')
+  callback(null, {data: 'Beta'})
 }

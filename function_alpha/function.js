@@ -1,50 +1,41 @@
-const aws = require('aws-sdk')
+const requests = require('requests')
+var ENDPOINT = 'https://XXX.execute-api.eu-central-1.amazonaws.com/test/'
 
-exports.handler = async (event, context) => {
-  console.log("Alpha function called")
-  var lambda = new aws.Lambda({region: 'eu-central-2'})
+exports.handler = async (event, context, callback) => {
+  console.log('Alpha function called')
+  callBeta(event, callback)
+  callGamma(event, callback)
+  console.log('End')
+}
 
-  var send_event = {
-    success: true,
-    data: 'yup'
+var callBeta = (event, callback) => {
+  console.log('Calling beta')
+  let options = {
+    url: ENDPOINT.concat('beta'),
+    method: 'POST',
+    body: event
   }
-  callBeta(lambda, send_event)
-  console.log("End")
+  send(options, callback)
 }
 
-var callBeta = (lambda, event) => {
-  lambda.invoke({
-    FunctionName: 'Dom-DOGAUTO-401-test-beta',
-    Payload: JSON.stringify(event)
-  },
-  (error, data) => {
-    if (error) {
-      console.log('Beta fail')
-      console.log(error)
-      context.done('error', error)
-    } else {
-      context.succeed(data.Payload)
-      console.log('Beta called successfully')
-      console.log(data.Payload)
-      callGamma(lambda, data.Payload)
-    }
-  })
+var callGamma = (event, callback) => {
+  console.log('Calling gamma')
+  let options = {
+    url: ENDPOINT.concat('gamma'),
+    method: 'POST',
+    body: event
+  }
+  send(options, callback)
 }
 
-var callGamma = (lambda, event) => {
-  lambda.invoke({
-    FunctionName: 'Dom-DOGAUTO-401-test-beta',
-    Payload: JSON.stringify(event)
-  },
-  (error, data) => {
-    if (error) {
-      console.log('Gamma fail')
-      console.log(error)
-      context.done('error', error)
-    } else {
-      context.succeed(data)
-      console.log('Gamma called successfully')
-      console.log(data.Payload)
+const send = (options, callback) => {
+  requests(options,
+    (error, body) => {
+      if (error) {
+        callback(error, null)
+      } else {
+        callback(null, body)
+      }
     }
-  })
+  )
 }
