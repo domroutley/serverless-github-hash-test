@@ -1,0 +1,38 @@
+service: DomTesting
+
+frameworkVersion: ">=1.27.2 <2.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: test
+  region: eu-central-1
+  timeout: 2
+
+package:
+  individually: true
+  exclude:
+    - ".*/**"
+
+functions:
+  alpha:
+    name: ${self:service}-alpha
+    handler: function_alpha/function.handler
+    package:
+      include:
+        - function_alpha/**
+        - node_modules/**
+  beta:
+    name: ${self:service}-beta
+    handler: function_beta/function.handler
+    package:
+      include:
+        - function_beta/**
+        - node_modules/**
+  gamma:
+    name: ${self:service}-gamma
+    handler: function_gamma/function.handler
+    package:
+      include:
+        - function_gamma/**
+        - node_modules/**
