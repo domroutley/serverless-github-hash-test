@@ -1,5 +1,5 @@
 const request = require('request')
-var ENDPOINT = 'https://gdi972osy5.execute-api.eu-central-1.amazonaws.com/test/'
+var ENDPOINT = 'https://XXX.execute-api.eu-central-1.amazonaws.com/test/'
 
 exports.handler = (event, context, callback) => {
   console.log('Alpha function called')
@@ -33,8 +33,8 @@ var callGamma = (event, callback) => {
 const send = (options, callback) => {
   request(options,
     (error, body) => {
-      console.log('ERROR : '.concat(error))
-      console.log('DATA  : '.concat(body))
+      console.log(error)
+      console.log(body)
       callback(error, body)
     }
   )
