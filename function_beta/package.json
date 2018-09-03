@@ -7,7 +7,5 @@
     "url": "https://github.com/domroutley/serverless-github-hash-test/tree/master/function_beta"
   },
   "license": "MIT",
-  "dependencies": {
-    "aws-sdk": "^2.307.0"
-  }
+  "dependencies": {}
 }
