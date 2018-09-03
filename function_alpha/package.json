@@ -1,0 +1,13 @@
+{
+  "name": "Alpha",
+  "description": "Testing of serverless stuff",
+  "author": "Dom Routley",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/domroutley/serverless-github-hash-test/tree/master/function_alpha"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.307.0"
+  }
+}
