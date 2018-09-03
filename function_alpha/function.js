@@ -33,6 +33,8 @@ var callGamma = (event, callback) => {
 const send = (options, callback) => {
   request(options,
     (error, body) => {
+      console.log('ERROR : '.concat(error))
+      console.log('DATA  : '.concat(body))
       callback(error, body)
     }
   )
