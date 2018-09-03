@@ -4,11 +4,12 @@ exports.handler = async (event, context) => {
   console.log("Alpha function called")
   var lambda = new aws.Lambda({region: 'eu-central-2'})
 
-  var event = {
+  var send_event = {
     success: true,
     data: 'yup'
   }
-  callBeta(lambda, event)
+  callBeta(lambda, send_event)
+  console.log("End")
 }
 
 var callBeta = (lambda, event) => {
