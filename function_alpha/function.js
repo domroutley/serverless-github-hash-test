@@ -1,7 +1,7 @@
-const requests = require('requests')
-var ENDPOINT = 'https://XXX.execute-api.eu-central-1.amazonaws.com/test/'
+const request = require('request')
+var ENDPOINT = 'https://gdi972osy5.execute-api.eu-central-1.amazonaws.com/test/'
 
-exports.handler = async (event, context, callback) => {
+exports.handler = (event, context, callback) => {
   console.log('Alpha function called')
   callBeta(event, callback)
   callGamma(event, callback)
@@ -29,13 +29,9 @@ var callGamma = (event, callback) => {
 }
 
 const send = (options, callback) => {
-  requests(options,
+  request(options,
     (error, body) => {
-      if (error) {
-        callback(error, null)
-      } else {
-        callback(null, body)
-      }
+      callback(error, body)
     }
   )
 }
