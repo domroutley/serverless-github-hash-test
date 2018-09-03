@@ -13,7 +13,8 @@ var callBeta = (event, callback) => {
   let options = {
     url: ENDPOINT.concat('beta'),
     method: 'POST',
-    body: event
+    body: event,
+    json: true
   }
   send(options, callback)
 }
@@ -23,7 +24,8 @@ var callGamma = (event, callback) => {
   let options = {
     url: ENDPOINT.concat('gamma'),
     method: 'POST',
-    body: event
+    body: event,
+    json: true
   }
   send(options, callback)
 }
