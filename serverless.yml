@@ -14,6 +14,9 @@ package:
   exclude:
     - ".*/**"
 
+plugins:
+  - serverless-plugin-git-variables
+
 functions:
   alpha:
     name: ${self:service}-alpha
