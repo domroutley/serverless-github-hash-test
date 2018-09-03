@@ -1,0 +1,8 @@
+{
+  "name": "serverless-testing",
+  "description": "Testing of serverless stuff",
+  "author": "Dom Routley",
+  "dependencies": {
+    "serverless": "^1.30.0"
+  }
+}
