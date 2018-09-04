@@ -5,7 +5,7 @@ exports.handler = (event, context, callback) => {
   var giveBack = {
     statusCode: 200,
     headers: {'Content-Type': 'application/json'},
-    body: {'data': 'Lore sent from Beta'}
+    body: JSON.stringify({'data': 'Lore sent from Beta'})
   }
   callback(null, giveBack)
 }
