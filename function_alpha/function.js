@@ -34,7 +34,7 @@ const send = (options, callback) => {
   request(options,
     (error, body) => {
       console.log(error)
-      console.log(body)
+      console.log(body.body)
       //callback(error, body)
     }
   )
