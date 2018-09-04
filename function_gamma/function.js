@@ -2,5 +2,10 @@
 exports.handler = (event, context, callback) => {
   console.log('Hello universe')
   console.log(event)
-  callback(null, {statusCode: 200, data: 'Some data sent from Gamma'})
+  var giveBack = {
+    statusCode: 200,
+    headers: {'Content-Type': 'application/json'},
+    body: {'data': 'Lore sent from Beta'}
+  }
+  callback(null, giveBack)
 }
