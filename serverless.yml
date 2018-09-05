@@ -99,4 +99,4 @@ resources:
                     - execute-api:Invoke
                     - execute-api:InvalidateCache
                   Resource:
-                    - "arn:aws:execute-api:${self:provider.region}:*:*/*/${self:provider.stage}/POST"
+                    - "arn:aws:execute-api:${self:provider.region}:*:*/*/${self:provider.stage}/POST/*"
