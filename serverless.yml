@@ -25,44 +25,8 @@ plugins:
   - serverless-plugin-git-variables
 
 functions:
-
-  alpha:
-    name: ${self:service}-alpha
-    description: "Branch: ${git:branch} - Commit: ${git:sha1}"
-    handler: function_alpha/function.handler
-    package:
-      include:
-        - function_alpha/node_modules/**
-        - function_alpha/function.js
-    role: callingFunction
-
-  beta:
-    name: ${self:service}-beta
-    description: "Branch: ${git:branch} - Commit: ${git:sha1}"
-    handler: function_beta/function.handler
-    package:
-      include:
-        - function_beta/function.js
-    events:
-      - http:
-          method: POST
-          path: beta
-          authorizer: aws_iam
-    role: subFunctions
-
-  gamma:
-    name: ${self:service}-gamma
-    description: "Branch: ${git:branch} - Commit: ${git:sha1}"
-    handler: function_gamma/function.handler
-    package:
-      include:
-        - function_gamma/function.js
-    events:
-      - http:
-          method: POST
-          path: gamma
-          authorizer: aws_iam
-    role: subFunctions
+  - ${file(serverless_resources/base/functions.yml)}
+  - ${file(serverless_resources/sub/functions.yml)}
 
 resources:
   - ${file(serverless_resources/base/role.yml)}

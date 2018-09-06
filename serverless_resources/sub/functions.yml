@@ -1,0 +1,28 @@
+---
+beta:
+  name: ${self:service}-beta
+  description: "Branch: ${git:branch} - Commit: ${git:sha1}"
+  handler: function_beta/function.handler
+  package:
+    include:
+      - function_beta/function.js
+  events:
+    - http:
+        method: POST
+        path: beta
+        authorizer: aws_iam
+  role: subFunctions
+
+gamma:
+  name: ${self:service}-gamma
+  description: "Branch: ${git:branch} - Commit: ${git:sha1}"
+  handler: function_gamma/function.handler
+  package:
+    include:
+      - function_gamma/function.js
+  events:
+    - http:
+        method: POST
+        path: gamma
+        authorizer: aws_iam
+  role: subFunctions
