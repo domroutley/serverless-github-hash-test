@@ -8,6 +8,13 @@ provider:
   stage: "${opt:stage, 'test'}"
   region: eu-central-1
   timeout: 2
+  environment:
+    SELF_ENDPOINT:
+      Fn::Join:
+        - ""
+        - - "https://"
+          - Ref: "ApiGatewayRestApi"
+          - ".execute-api.${self:provider.region}.amazonaws.com/${self:provider.stage}/"
 
 package:
   individually: true
