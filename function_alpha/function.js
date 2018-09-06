@@ -52,10 +52,10 @@ var callGamma = (event, callback) => {
 
 const send = (options, callback) => {
   request(options,
-    (error, body) => {
+    (error, response) => {
       console.log(error)
-      console.log(body.body)
-      callback(error, body)
+      console.log(response.body)
+      callback(error, response.body)
     }
   )
 }
