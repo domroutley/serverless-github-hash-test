@@ -29,3 +29,5 @@ environment:
 - `SELF_ENDPOINT:` The name of the environment variable that Lambda functions will be able to access
 - `FN::Join` Using CloudFormation information
 - The rest is what we are pulling from CloudFormation, we are pulling in this case the unique `ApiGatewayRestApi` so that it can be accessed from the Lambda functions.
+
+For more information on this block look at [this page wot I found](http://www.goingserverless.com/blog/api-gateway-url).
