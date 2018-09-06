@@ -1,0 +1,10 @@
+---
+alpha:
+  name: ${self:service}-alpha
+  description: "Branch: ${git:branch} - Commit: ${git:sha1}"
+  handler: function_alpha/function.handler
+  package:
+    include:
+      - function_alpha/node_modules/**
+      - function_alpha/function.js
+  role: callingFunction
