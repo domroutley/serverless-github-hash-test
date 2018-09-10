@@ -6,6 +6,7 @@ beta:
   package:
     include:
       - function_beta/function.js
+      - function_beta/index.js
   events:
     - http:
         method: POST
